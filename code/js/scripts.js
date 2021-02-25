@@ -25,6 +25,9 @@ function main(){
 
     });
 
+    page.inpFind.addEventListener("input", ()=> {
+
+    });
 }
 
 main();
