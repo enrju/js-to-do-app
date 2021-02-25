@@ -17,6 +17,10 @@ function getPage(){
 function main(){
     let page = getPage();
     
+    page.btnAdd.addEventListener("submit", ()=> {
+
+    });
+
 }
 
 main();
