@@ -21,6 +21,10 @@ function main(){
 
     });
 
+    page.btnDelete.addEventListener("click", ()=> {
+
+    });
+
 }
 
 main();
