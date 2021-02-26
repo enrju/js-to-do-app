@@ -39,6 +39,10 @@ function createTmpTasks(tasks, criterion){
     return result;
 }
 
+function clearInput(input){
+    input.value = "";
+}
+
 function updatePage(page, tmpTasks){
     page.h1.textContent = `You have ${tmpTasks.length} tasks to do:`;
     page.ul.innerHTML = "";
@@ -70,6 +74,7 @@ function main(){
         if(isInpNewEmpty === false){
             tasks = addTask(newTask, tasks);
             console.log(tasks);
+            clearInput(page.inpNew);
         }
         else {
             alert('Write task which you want to add, before you click "Add task", please.');
