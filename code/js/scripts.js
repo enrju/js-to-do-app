@@ -48,7 +48,26 @@ function clearTasks(tasks){
     return tasks;
 }
 
+function updateUL(ul, tmpTasks){
+    ul.innerHTML = "";
     for(let i = 0; i < tmpTasks.length; i++){
+        //create button - Delete one task
+        let btnDelOne = document.createElement("button");
+        btnDelOne.textContent = "Delete";
+        btnDelOne.setAttribute("data-key",`${i}`);
+        btnDelOne.addEventListener("click",()=>{
+            console.log('delete one task');
+        });
+
+        //create li
+        let li = document.createElement("li");
+        li.textContent = `${tmpTasks[i]}`;
+
+        //add button into li
+        li.appendChild(btnDelOne);
+        
+        //add li into ul
+        ul.appendChild(li);
     }
 }
 
