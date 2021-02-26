@@ -19,10 +19,16 @@ function getInput(input){
     return input.value;
 }
 
+function addTask(task, tasks){
+    tasks.push(task);
+    return tasks;
+}
+
 function main(){
     let page = getPage();
     let isInpNewEmpty = true;
     let newTask = "";
+    let tasks = [];
     
     page.btnAdd.addEventListener("click", (e)=> {
         e.preventDefault();
@@ -34,6 +40,13 @@ function main(){
         }
         else{
             isInpNewEmpty = false;
+        }
+
+        if(isInpNewEmpty === false){
+            tasks = addTask(newTask, tasks);
+            console.log(tasks);
+        }
+        else {
         }
     });
 
