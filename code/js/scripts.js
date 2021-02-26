@@ -56,12 +56,8 @@ function updateUL(page, tmpTasks, tasks){
         btnDelOne.textContent = "Delete";
         btnDelOne.setAttribute("data-key",`${i}`);
         btnDelOne.addEventListener("click",(e)=>{
-            // console.log('delete one task');
             let index = e.target.dataset.key;
-            console.log(index);
-            // e.target.parentNode.remove();
             tasks.splice(index,1);
-            // console.log(tasks);
             updatePage(page, tmpTasks, tasks);
         });
 
@@ -104,7 +100,6 @@ function main(){
 
         if(isInpNewEmpty === false){
             tasks = addTask(newTask, tasks);
-            // console.log(tasks);
             clearInput(page.inpNew);
         }
         else {
@@ -118,14 +113,13 @@ function main(){
     page.btnDelete.addEventListener("click", ()=> {
         tasks = clearTasks(tasks);
 
-        //it working without below lines
+        //it working without 2 lines below
         tmpTasks = createTmpTasks(tasks, criterion);
         updatePage(page, tmpTasks, tasks);
     });
 
     page.inpFind.addEventListener("input", ()=> {
         criterion = getInput(page.inpFind);
-        console.log(criterion);
         tmpTasks = createTmpTasks(tasks, criterion);
         updatePage(page, tmpTasks, tasks);
     });
