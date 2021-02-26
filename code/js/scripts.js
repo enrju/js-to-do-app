@@ -29,7 +29,7 @@ function createTmpTasks(tasks, criterion){
 
     if(criterion !== ""){
         result = tasks.filter((item)=>{
-            item.includes(criterion);
+            return item.includes(criterion);
         })
     }
     else{
@@ -78,7 +78,7 @@ function main(){
 
         if(isInpNewEmpty === false){
             tasks = addTask(newTask, tasks);
-            console.log(tasks);
+            // console.log(tasks);
             clearInput(page.inpNew);
         }
         else {
@@ -86,7 +86,6 @@ function main(){
         }
 
         tmpTasks = createTmpTasks(tasks, criterion);
-
         updatePage(page, tmpTasks);
     });
 
@@ -94,13 +93,15 @@ function main(){
         tasks = clearTasks(tasks);
 
         //it working without below lines
-        tmpTasks = createTmpTasks(tasks, "");
-
+        tmpTasks = createTmpTasks(tasks, criterion);
         updatePage(page, tmpTasks);
     });
 
     page.inpFind.addEventListener("input", ()=> {
-
+        criterion = getInput(page.inpFind);
+        console.log(criterion);
+        tmpTasks = createTmpTasks(tasks, criterion);
+        updatePage(page, tmpTasks);
     });
 }
 
