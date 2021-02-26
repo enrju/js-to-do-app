@@ -17,12 +17,12 @@ function getPage(){
 function main(){
     let page = getPage();
     
-    page.btnAdd.addEventListener("submit", ()=> {
+    page.btnAdd.addEventListener("click", (e)=> {
+        e.preventDefault();
 
     });
 
     page.btnDelete.addEventListener("click", ()=> {
-
     });
 
     page.inpFind.addEventListener("input", ()=> {
