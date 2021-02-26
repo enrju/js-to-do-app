@@ -1,3 +1,6 @@
+// What is does: get elements from HTML
+//        input: none
+//       output: structure of elements from HTML
 function getPage(){
     const inpNew = document.querySelector("input.new");
     const inpFind = document.querySelector("input.find");
@@ -15,15 +18,27 @@ function getPage(){
         ul};
 }
 
+// What is does: get value from input
+//        input: input - which input
+//       output: value from input
 function getInput(input){
     return input.value;
 }
 
+// What is does: add task into array of tasks
+//        input: task - task for adding
+//               tasks - array of tasks
+//       output: array of tasks
 function addTask(task, tasks){
     tasks.push(task);
     return tasks;
 }
 
+// What is does: create array of tasks for display
+//               with tasks meeting the criterion
+//        input: tasks - array of tasks
+//               criterion - the text that the task must contain
+//       output: array of tasks meeting the criterion
 function createTmpTasks(tasks, criterion){
     let result;
 
@@ -39,15 +54,28 @@ function createTmpTasks(tasks, criterion){
     return result;
 }
 
+// What is does: clear input on HTML
+//        input: input - which input
+//       output: none
 function clearInput(input){
     input.value = "";
 }
 
+// What is does: delete all tasks from list
+//        input: tasks - array of tasks
+//       output: array of tasks
 function clearTasks(tasks){
     tasks.length = 0;
     return tasks;
 }
 
+// What is does: add tasks into HTML - complete ul mark
+//               connect event for delete single task
+//               modify list of task after delet single task
+//        input: page - task for adding
+//               tmpTasks - array of tasks for display
+//               tasks - array of tasks
+//       output: none
 function updateUL(page, tmpTasks, tasks){
     page.ul.innerHTML = "";
     for(let i = 0; i < tmpTasks.length; i++){
@@ -73,11 +101,19 @@ function updateUL(page, tmpTasks, tasks){
     }
 }
 
+// What is does: update elements in HTML
+//        input: page - task for adding
+//               tmpTasks - array of tasks for display
+//               tasks - array of tasks
+//       output: none
 function updatePage(page, tmpTasks, tasks){
     page.h1.textContent = `You have ${tmpTasks.length} tasks to do:`;
     updateUL(page, tmpTasks, tasks);
 }
 
+// What is does: main function of program
+//        input: none
+//       output: none
 function main(){
     let page = getPage();
     let isInpNewEmpty = true;
