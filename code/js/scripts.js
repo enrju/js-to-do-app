@@ -26,7 +26,7 @@ function addTask(task, tasks){
 
 function createTmpTasks(tasks, criterion){
     let result;
-    
+
     if(criterion !== ""){
         result = tasks.filter((item)=>{
             item.includes(criterion);
@@ -37,6 +37,14 @@ function createTmpTasks(tasks, criterion){
     }
     
     return result;
+}
+
+function updatePage(page, tmpTasks){
+    page.h1.textContent = `You have ${tmpTasks.length} tasks to do:`;
+    page.ul.innerHTML = "";
+    for(let i = 0; i < tmpTasks.length; i++){
+        page.ul.innerHTML += `<li>${tmpTasks[i]} [X]</li>`;
+    }
 }
 
 function main(){
@@ -68,6 +76,8 @@ function main(){
         }
 
         tmpTasks = createTmpTasks(tasks, criterion);
+
+        updatePage(page, tmpTasks);
     });
 
     page.btnDelete.addEventListener("click", ()=> {
