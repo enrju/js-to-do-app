@@ -47,6 +47,7 @@ function main(){
             console.log(tasks);
         }
         else {
+            alert('Write task which you want to add, before you click "Add task", please.');
         }
     });
 
