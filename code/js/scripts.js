@@ -24,11 +24,28 @@ function addTask(task, tasks){
     return tasks;
 }
 
+function createTmpTasks(tasks, criterion){
+    let result;
+    
+    if(criterion !== ""){
+        result = tasks.filter((item)=>{
+            item.includes(criterion);
+        })
+    }
+    else{
+        result = tasks;
+    }
+    
+    return result;
+}
+
 function main(){
     let page = getPage();
     let isInpNewEmpty = true;
     let newTask = "";
+    let criterion = "";
     let tasks = [];
+    let tmpTasks = [];
     
     page.btnAdd.addEventListener("click", (e)=> {
         e.preventDefault();
@@ -49,6 +66,8 @@ function main(){
         else {
             alert('Write task which you want to add, before you click "Add task", please.');
         }
+
+        tmpTasks = createTmpTasks(tasks, criterion);
     });
 
     page.btnDelete.addEventListener("click", ()=> {
