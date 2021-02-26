@@ -48,12 +48,13 @@ function clearTasks(tasks){
     return tasks;
 }
 
+    for(let i = 0; i < tmpTasks.length; i++){
+    }
+}
+
 function updatePage(page, tmpTasks){
     page.h1.textContent = `You have ${tmpTasks.length} tasks to do:`;
-    page.ul.innerHTML = "";
-    for(let i = 0; i < tmpTasks.length; i++){
-        page.ul.innerHTML += `<li>${tmpTasks[i]} [X]</li>`;
-    }
+    updateUL(page.ul, tmpTasks);
 }
 
 function main(){
