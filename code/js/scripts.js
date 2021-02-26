@@ -21,6 +21,7 @@ function getInput(input){
 
 function main(){
     let page = getPage();
+    let isInpNewEmpty = true;
     let newTask = "";
     
     page.btnAdd.addEventListener("click", (e)=> {
@@ -28,6 +29,12 @@ function main(){
 
         newTask = getInput(page.inpNew);
         
+        if(newTask === ""){
+            isInpNewEmpty = true;
+        }
+        else{
+            isInpNewEmpty = false;
+        }
     });
 
     page.btnDelete.addEventListener("click", ()=> {
