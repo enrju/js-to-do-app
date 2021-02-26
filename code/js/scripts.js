@@ -43,6 +43,11 @@ function clearInput(input){
     input.value = "";
 }
 
+function clearTasks(tasks){
+    tasks.length = 0;
+    return tasks;
+}
+
 function updatePage(page, tmpTasks){
     page.h1.textContent = `You have ${tmpTasks.length} tasks to do:`;
     page.ul.innerHTML = "";
@@ -86,7 +91,12 @@ function main(){
     });
 
     page.btnDelete.addEventListener("click", ()=> {
+        tasks = clearTasks(tasks);
 
+        //it working without below lines
+        tmpTasks = createTmpTasks(tasks, "");
+
+        updatePage(page, tmpTasks);
     });
 
     page.inpFind.addEventListener("input", ()=> {
