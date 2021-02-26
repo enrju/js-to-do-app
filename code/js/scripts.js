@@ -48,15 +48,21 @@ function clearTasks(tasks){
     return tasks;
 }
 
-function updateUL(ul, tmpTasks){
-    ul.innerHTML = "";
+function updateUL(page, tmpTasks, tasks){
+    page.ul.innerHTML = "";
     for(let i = 0; i < tmpTasks.length; i++){
         //create button - Delete one task
         let btnDelOne = document.createElement("button");
         btnDelOne.textContent = "Delete";
         btnDelOne.setAttribute("data-key",`${i}`);
-        btnDelOne.addEventListener("click",()=>{
-            console.log('delete one task');
+        btnDelOne.addEventListener("click",(e)=>{
+            // console.log('delete one task');
+            let index = e.target.dataset.key;
+            console.log(index);
+            // e.target.parentNode.remove();
+            tasks.splice(index,1);
+            // console.log(tasks);
+            updatePage(page, tmpTasks, tasks);
         });
 
         //create li
@@ -67,13 +73,13 @@ function updateUL(ul, tmpTasks){
         li.appendChild(btnDelOne);
         
         //add li into ul
-        ul.appendChild(li);
+        page.ul.appendChild(li);
     }
 }
 
-function updatePage(page, tmpTasks){
+function updatePage(page, tmpTasks, tasks){
     page.h1.textContent = `You have ${tmpTasks.length} tasks to do:`;
-    updateUL(page.ul, tmpTasks);
+    updateUL(page, tmpTasks, tasks);
 }
 
 function main(){
@@ -106,7 +112,7 @@ function main(){
         }
 
         tmpTasks = createTmpTasks(tasks, criterion);
-        updatePage(page, tmpTasks);
+        updatePage(page, tmpTasks, tasks);
     });
 
     page.btnDelete.addEventListener("click", ()=> {
@@ -114,14 +120,14 @@ function main(){
 
         //it working without below lines
         tmpTasks = createTmpTasks(tasks, criterion);
-        updatePage(page, tmpTasks);
+        updatePage(page, tmpTasks, tasks);
     });
 
     page.inpFind.addEventListener("input", ()=> {
         criterion = getInput(page.inpFind);
         console.log(criterion);
         tmpTasks = createTmpTasks(tasks, criterion);
-        updatePage(page, tmpTasks);
+        updatePage(page, tmpTasks, tasks);
     });
 }
 
